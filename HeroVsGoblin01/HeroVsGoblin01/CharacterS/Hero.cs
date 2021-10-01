@@ -6,8 +6,11 @@ namespace HeroVsGoblin01.Characters
   public class Hero : Character
   {
     #region Constructors
-    public Hero(int xValue, int yValue, int hp) : base(xValue, yValue, Settings.Default.HeroSymbol)
+    public Hero(int xValue, int yValue, int hp=-1) : base(xValue, yValue, Settings.Default.HeroSymbol)
     {
+      if (hp <= -1)
+        hp = Settings.Default.HeroHp;
+
       HP = hp;
       MaxHP = hp;
       Damage = Settings.Default.HeroDamage;

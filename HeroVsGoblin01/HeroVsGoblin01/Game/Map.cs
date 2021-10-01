@@ -1,24 +1,17 @@
-﻿using HeroVsGoblin01.Common;
+﻿using HeroVsGoblin01.Characters;
+using HeroVsGoblin01.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HeroVsGoblin01.Game
 {
   public class Map : Tile
   {
-    #region Hero HP
-    const int HERO_HP = 10;
-    #endregion
-
     #region Constructors
     public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numberOfEnemies)
     {
-      random = new Random();
-      _height = random.Next(minHeight, maxHeight);
-      _width = random.Next(minWidth, maxWidth);
+      _random = new Random();
+      _height = _random.Next(minHeight, maxHeight);
+      _width = _random.Next(minWidth, maxWidth);
       _tileArray = new Tile[_width, _height];
       _enemies = new Enemy[numberOfEnemies];
       Create();
@@ -26,30 +19,30 @@ namespace HeroVsGoblin01.Game
     }
     #endregion
 
-
     #region Private member variables
     private int _height;
     private int _width;
     private Hero _hero;
     private Enemy[] _enemies;
     private Tile[,] _tileArray;  // Create a 2d tile array
-    private Random random;
+    private Random _random;
     #endregion
 
     #region Public accessors
     public Hero Hero { get => _hero; }
     public Enemy[] Enemies { get => _enemies; }
-    public int Height { get => _height; }
-    public int Width { get => _width; }
+    public int MapHeight { get => _height; }
+    public int MapWidth { get => _width; }
     public Tile[,] TileArray { get => _tileArray; }
     #endregion
-
 
     #region Private methods
     private void Create()
     {
       CreateTileMapBorders();
+      // Start by creating the hero
       Create(TileType.Hero);
+      // Next, create enemies at random positionso on the map
       for (int i = 0; i < _enemies.Length; i++)
       {
         var enemy = Create(TileType.Enemy);
@@ -59,7 +52,6 @@ namespace HeroVsGoblin01.Game
 
     private void CreateTileMapBorders()
     {
-
       for (int i = 0; i < _tileArray.GetLength(0); i++)
       {
         for (int j = 0; j < _tileArray.GetLength(1); j++)
@@ -82,19 +74,15 @@ namespace HeroVsGoblin01.Game
     /// </summary>
     private void UpdateVision()
     {
-      // north
-      _hero.Vision[0] = _tileArray[_hero.X-1, _hero.Y];
-      // south
-      _hero.Vision[1] = _tileArray[_hero.X+1, _hero.Y];
-      //west
-      _hero.Vision[2] = _tileArray[_hero.X, _hero.Y-1];
-      //east
-      _hero.Vision[3] = _tileArray[_hero.X, _hero.Y + 1];
-
-      // TODO: repeat for enemies
+      UpdateVision(_hero);
+      // TODO: do same for enemies
     }
 
 
+    /// <summary>
+    /// Used to update vision after a character moves to a different cell
+    /// </summary>
+    /// <param name="c"></param>
     public void UpdateVision(Character c)
     {
       // north
@@ -105,8 +93,6 @@ namespace HeroVsGoblin01.Game
       c.Vision[2] = _tileArray[c.X, c.Y - 1];
       //east
       c.Vision[3] = _tileArray[c.X, c.Y + 1];
-
-      // TODO: repeat for enemies
     }
 
 
@@ -121,7 +107,7 @@ namespace HeroVsGoblin01.Game
       switch (type)
       {
         case TileType.Hero:
-          _hero = new Hero(position.Item1, position.Item2, HERO_HP);
+          _hero = new Hero(position.Item1, position.Item2);
           _tileArray[position.Item1, position.Item2] = _hero;
           return _hero;
 
@@ -151,16 +137,15 @@ namespace HeroVsGoblin01.Game
     /// <returns></returns>
     private Tuple<int, int> GetNextAvailablePosition()
     {
-      var posX = random.Next(1, Width - 1);  // make sure not to select a tile on the border
-      var posY = random.Next(1, Height - 1);
+      var posX = _random.Next(1, MapWidth - 1);  // make sure not to select a tile on the border
+      var posY = _random.Next(1, MapHeight - 1);
       bool isAvailable = _tileArray[posX, posY] == null;
       while (!isAvailable)
       {
-        posX = random.Next(1, Width - 1);  // make sure not to select a tile on the border
-        posY = random.Next(1, Height - 1);
+        posX = _random.Next(1, MapWidth - 1);
+        posY = _random.Next(1, MapHeight - 1);
         isAvailable = _tileArray[posX, posY] == null;
       }
-
       return Tuple.Create(posX, posY);
     }
     #endregion
