@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroVsGoblin01", "HeroVsGob
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroVsGoblin01.Tests", "..\HeroVsGoblin01.Tests\HeroVsGoblin01.Tests.csproj", "{92234396-9D2F-4056-B5E8-27F2A2DAC03B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstGame", "..\FirstGame\FirstGame.csproj", "{A8668226-281F-44C4-B316-AF5BCCCB4458}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{92234396-9D2F-4056-B5E8-27F2A2DAC03B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92234396-9D2F-4056-B5E8-27F2A2DAC03B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92234396-9D2F-4056-B5E8-27F2A2DAC03B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8668226-281F-44C4-B316-AF5BCCCB4458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8668226-281F-44C4-B316-AF5BCCCB4458}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8668226-281F-44C4-B316-AF5BCCCB4458}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8668226-281F-44C4-B316-AF5BCCCB4458}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

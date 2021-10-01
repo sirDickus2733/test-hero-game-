@@ -31,7 +31,7 @@ namespace HeroVsGoblin01.Common
     protected int _x;
     protected int _y;
     protected string _symbol;
-    private TileType _kind;  // use kind instead of type - avoid confusion with c# object Type
+    protected TileType _kind;  // use kind instead of type - avoid confusion with c# object Type
     #endregion
 
     #region Public members

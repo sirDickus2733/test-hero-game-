@@ -14,6 +14,7 @@ namespace HeroVsGoblin01.Characters
       HP = hp;
       MaxHP = hp;
       Damage = Settings.Default.HeroDamage;
+      _kind = TileType.Hero;
     }
     #endregion
 

@@ -16,6 +16,7 @@ namespace HeroVsGoblin01.Characters
       _hp = hp;
       _maxHP = hp;
       _damage = damage;
+      _kind = TileType.Enemy;
       _random = new Random();
     }
     #endregion

@@ -1,4 +1,5 @@
 ﻿
+using HeroVsGoblin01.Characters;
 using HeroVsGoblin01.Common;
 using System.Drawing;
 using System.Windows.Forms;
@@ -70,7 +71,9 @@ namespace HeroVsGoblin01
             b.Click += cell.HandleClick;
 
           b.Text = cell?.Symbol ?? ".";
-          b.Text = $"{b.Text}({i},{j})";
+          if(Properties.Settings.Default.ShowCellCoordinates)
+            b.Text = $"{b.Text}({i},{j})";
+
           b.Size = new Size(cellW, cellY);
           b.Location = new Point(cellPosX, cellPosY);
 
@@ -85,6 +88,11 @@ namespace HeroVsGoblin01
             b.ForeColor = Color.White;
             UpdateHeroStats(cell);
           }
+          else if (cell?.GetType() == typeof(Goblin))
+          {
+            b.BackColor = Color.Orange;
+            b.ForeColor = Color.White;
+          }
 
           _gameMap.Controls.Add(b);
           cellPosX += cellW;
@@ -98,6 +106,18 @@ namespace HeroVsGoblin01
 
 
 
+    private void UpdateHeroStats(Tile hero)
+    {
+      if (_playerHealthStats == null)
+      {
+        _playerHealthStats = new RichTextBox();
+        _playerHealthStats.Location = new Point(105, 420);
+        _playerHealthStats.Size = new Size(180, 80);
+      }
+      var heroObject = (Hero)hero;
+      _playerHealthStats.Text = heroObject.ToString();
+      _playerHealthPoints = heroObject.HP / heroObject.MaxHP;
+    }
     #endregion
   }
 }

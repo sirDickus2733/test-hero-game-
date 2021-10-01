@@ -139,13 +139,25 @@ namespace HeroVsGoblin01.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        [global::System.Configuration.DefaultSettingValueAttribute("520")]
         public int ScreenHeight {
             get {
                 return ((int)(this["ScreenHeight"]));
             }
             set {
                 this["ScreenHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowCellCoordinates {
+            get {
+                return ((bool)(this["ShowCellCoordinates"]));
+            }
+            set {
+                this["ShowCellCoordinates"] = value;
             }
         }
     }
