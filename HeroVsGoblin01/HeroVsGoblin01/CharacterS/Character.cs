@@ -1,6 +1,6 @@
 ﻿using HeroVsGoblin01.Common;
 
-namespace HeroVsGoblin01.Game
+namespace HeroVsGoblin01.Characters
 {
   /// <summary>
   /// Represents any movable or immovable object  found on the game map

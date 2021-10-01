@@ -1,7 +1,7 @@
 ﻿using HeroVsGoblin01.Properties;
 using System.Text;
 
-namespace HeroVsGoblin01.Game
+namespace HeroVsGoblin01.Characters
 {
   public class Hero : Character
   {

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HeroVsGoblin01.Game
+namespace HeroVsGoblin01.Characters
 {
   public abstract class Enemy : Character
   {
-    protected Random _random;
+    #region Protected memebers
+    protected Random _random; 
+    #endregion
 
     #region Constructor(s)
     public Enemy(int xValue, int yValue, 

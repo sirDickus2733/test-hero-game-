@@ -82,5 +82,29 @@ namespace HeroVsGoblin01.Properties {
                 this["HeroDamage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int GoblinDamage {
+            get {
+                return ((int)(this["GoblinDamage"]));
+            }
+            set {
+                this["GoblinDamage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int GoblinHp {
+            get {
+                return ((int)(this["GoblinHp"]));
+            }
+            set {
+                this["GoblinHp"] = value;
+            }
+        }
     }
 }

@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using HeroVsGoblin01.Characters;
+using HeroVsGoblin01.Common;
+using Serilog;
 
 namespace HeroVsGoblin01.Game
 {
   public class GameEngine
   {
-    private readonly Map _map;
+    #region Member variables
+    private readonly Map _map; 
+    #endregion
 
     #region Constructor
     public GameEngine()
@@ -24,7 +24,6 @@ namespace HeroVsGoblin01.Game
     }
     #endregion
 
-
     #region Public accessors
     public Map Map
     {
@@ -34,12 +33,12 @@ namespace HeroVsGoblin01.Game
 
     #region Public methods
 
-    public bool MovePlayer(Character.MovementEnum direction)
+    public bool MoveHero(Character.MovementEnum direction)
     {
       var canMove = _map.Hero.ReturnMove(direction);
       if (canMove == Character.MovementEnum.NoMovement)
       {
-        MessageBox.Show($"Move {direction} request rejected");
+        Log.Debug($"Hero {_map.Hero} Unable to move {direction}. Target cell is occupied");
         return false;
       }
       var oldX = _map.Hero.X;
@@ -52,7 +51,7 @@ namespace HeroVsGoblin01.Game
       _map.TileArray[newX, newY] = _map.Hero;
       _map.UpdateVision(_map.Hero);
 
-      NotifyPlayerPositionChanged(new PlayerMovedEventArgs
+      RaisePlayerMovedEvent(new PlayerMovedEventArgs
       {
         OldX = oldX,
         OldY = oldY,
@@ -63,11 +62,10 @@ namespace HeroVsGoblin01.Game
     }
     #endregion
 
-
     #region Events
     public event EventHandler<PlayerMovedEventArgs> PlayerMoved;
 
-    private void NotifyPlayerPositionChanged(PlayerMovedEventArgs args)
+    private void RaisePlayerMovedEvent(PlayerMovedEventArgs args)
     {
       PlayerMoved?.Invoke(this, args);
     }
