@@ -35,12 +35,19 @@ namespace HeroVsGoblin01.Tests
       var expectedNorth = "4,5";
       var expectedSouth = "6,5";
 
+      var expectedWest = "5,4";
+      var expectedEast = "5,6";
+
+
       // ACT
       var t = new DummyTile(posX, posY, symbol);
 
       
       Assert.Equal(expectedNorth, t.North);
       Assert.Equal(expectedSouth, t.South);
+
+      Assert.Equal(expectedWest, t.West);
+      Assert.Equal(expectedEast, t.East);
     }
   }
 }

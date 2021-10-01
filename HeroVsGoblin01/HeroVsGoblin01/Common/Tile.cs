@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Serilog;
-using System.Windows.Forms;
 
 namespace HeroVsGoblin01.Common
 {
@@ -19,7 +16,7 @@ namespace HeroVsGoblin01.Common
 
     }
 
-    public Tile(int xValue, int yValue, string symbol = "_")
+    public Tile(int xValue, int yValue, string symbol = "")
     {
       _x = xValue;
       _y = yValue;
@@ -34,6 +31,7 @@ namespace HeroVsGoblin01.Common
     protected int _x;
     protected int _y;
     protected string _symbol;
+    private TileType _kind;  // use kind instead of type - avoid confusion with c# object Type
     #endregion
 
     #region Public members
@@ -72,6 +70,8 @@ namespace HeroVsGoblin01.Common
     {
       get => $"{X},{Y + 1}";
     }
+    
+    public TileType Type { get => _kind; }
 
     public enum TileType
     {
