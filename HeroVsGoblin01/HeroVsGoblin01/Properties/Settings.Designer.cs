@@ -34,5 +34,53 @@ namespace HeroVsGoblin01.Properties {
                 this["ObstacleSymbol"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("H")]
+        public string HeroSymbol {
+            get {
+                return ((string)(this["HeroSymbol"]));
+            }
+            set {
+                this["HeroSymbol"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("G")]
+        public string GoblinSymbol {
+            get {
+                return ((string)(this["GoblinSymbol"]));
+            }
+            set {
+                this["GoblinSymbol"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".")]
+        public string EmptyTileSymbol {
+            get {
+                return ((string)(this["EmptyTileSymbol"]));
+            }
+            set {
+                this["EmptyTileSymbol"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int HeroDamage {
+            get {
+                return ((int)(this["HeroDamage"]));
+            }
+            set {
+                this["HeroDamage"] = value;
+            }
+        }
     }
 }
