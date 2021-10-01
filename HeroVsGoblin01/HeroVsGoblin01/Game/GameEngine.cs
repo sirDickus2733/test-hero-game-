@@ -1,6 +1,7 @@
 ﻿using System;
 using HeroVsGoblin01.Characters;
 using HeroVsGoblin01.Common;
+using HeroVsGoblin01.Utils;
 using Serilog;
 
 namespace HeroVsGoblin01.Game
@@ -39,6 +40,7 @@ namespace HeroVsGoblin01.Game
       if (canMove == Character.MovementEnum.NoMovement)
       {
         Log.Debug($"Hero {_map.Hero} Unable to move {direction}. Target cell is occupied");
+        MediaManager.PlayInvalidMoveSound();
         return false;
       }
       var oldX = _map.Hero.X;
@@ -57,7 +59,8 @@ namespace HeroVsGoblin01.Game
         OldY = oldY,
         NewX = newX,
         NewY = newY
-      }); 
+      });
+      MediaManager.PlayValidMoveSound();
       return true;
     }
     #endregion

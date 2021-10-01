@@ -57,7 +57,7 @@ namespace HeroVsGoblin01
       return base.ProcessCmdKey(ref msg, keyData);
     }
 
-    private void HandlePlayerMovedEvent(object sender, Common.PlayerMovedEventArgs e)
+    private void HandlePlayerMovedEvent(object sender, PlayerMovedEventArgs e)
     {
       if (_gameMap != null)
       {
