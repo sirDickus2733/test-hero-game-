@@ -118,5 +118,35 @@ namespace HeroVsGoblin01.Properties {
                 this["HeroHp"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Hero Vs GoBlin")]
+        public string AppName {
+            get {
+                return ((string)(this["AppName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("620")]
+        public int ScreenWidth {
+            get {
+                return ((int)(this["ScreenWidth"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int ScreenHeight {
+            get {
+                return ((int)(this["ScreenHeight"]));
+            }
+            set {
+                this["ScreenHeight"] = value;
+            }
+        }
     }
 }

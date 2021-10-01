@@ -63,6 +63,9 @@ namespace HeroVsGoblin01.Game
     #endregion
 
     #region Events
+    /// <summary>
+    /// Event fired after a player move is completed
+    /// </summary>
     public event EventHandler<PlayerMovedEventArgs> PlayerMoved;
 
     private void RaisePlayerMovedEvent(PlayerMovedEventArgs args)
