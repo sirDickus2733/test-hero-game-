@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroVsGoblin01", "HeroVsGoblin01\HeroVsGoblin01.csproj", "{C5918E47-4864-4B57-B96F-88A867BE97A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroVsGoblin01", "HeroVsGoblin01\HeroVsGoblin01.csproj", "{C5918E47-4864-4B57-B96F-88A867BE97A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroVsGoblin01.Tests", "..\HeroVsGoblin01.Tests\HeroVsGoblin01.Tests.csproj", "{92234396-9D2F-4056-B5E8-27F2A2DAC03B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroVsGoblin01.Tests", "..\HeroVsGoblin01.Tests\HeroVsGoblin01.Tests.csproj", "{92234396-9D2F-4056-B5E8-27F2A2DAC03B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
