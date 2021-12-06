@@ -7,7 +7,7 @@ namespace HeroVsGoblin01.Characters
     #region Constructors
     public Goblin(int x, int y):base(x, y, Settings.Default.GoblinDamage, Settings.Default.GoblinHp, Settings.Default.GoblinSymbol)
     {
-
+      _weapon = new Weapons.MeleeWeapon("m", HeroVsGoblin01.Weapons.MeleeWeapon.Types.Dagger);
     }
     #endregion
 

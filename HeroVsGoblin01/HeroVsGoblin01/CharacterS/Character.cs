@@ -1,4 +1,5 @@
 ﻿using HeroVsGoblin01.Common;
+using HeroVsGoblin01.Weapons;
 
 namespace HeroVsGoblin01.Characters
 {
@@ -16,10 +17,18 @@ namespace HeroVsGoblin01.Characters
     public Character(int xValue, int yValue, string symbol) : base(xValue, yValue, symbol)
     {
       _vision = new Tile[NUMBER_OF_NEIGHBORS];
+
+    
     }
     #endregion
 
     #region Properties
+    protected Weapon _weapon;
+    public Weapon Weapons
+    {
+      get { return _weapon; }
+    }
+
     protected int _hp;
     /// <summary>
     /// A numerical representation of a character's health. aka hit points
@@ -116,7 +125,25 @@ namespace HeroVsGoblin01.Characters
     public bool IsDead() => HP == 0;
     #endregion
 
+    private void Equip(Weapon w)
+    {
+      _weapon = w;
+    }
+    
     #region Public methods
+    
+    public void Pickup(Tile item)
+    {
+      if (item.GetType() == typeof(Weapon))
+        Equip((Weapon)item);
+
+    }
+
+    public void Loot()
+    {
+      // TODO: take gold and weapons from victim
+    }
+
     public void Move(MovementEnum move)
     {
       switch (move)

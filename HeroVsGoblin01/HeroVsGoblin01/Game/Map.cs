@@ -16,6 +16,10 @@ namespace HeroVsGoblin01.Game
       _enemies = new Enemy[numberOfEnemies];
       Create();
       UpdateVision();
+
+      // TODO 1: On create, include weapons and Leader enemy type
+      // TODO 2: Intergrate shopping
+
     }
     #endregion
 
