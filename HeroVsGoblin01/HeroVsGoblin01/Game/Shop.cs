@@ -59,7 +59,7 @@ namespace HeroVsGoblin01.Game
 
     public bool CanBuy(int num)
     {
-      return _buyer.GoldPurse > _weapons[num].Cost;
+      return _buyer.GoldPurse >= _weapons[num].Cost;
     }
 
 

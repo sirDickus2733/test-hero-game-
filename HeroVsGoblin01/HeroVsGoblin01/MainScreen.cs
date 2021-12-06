@@ -55,6 +55,11 @@ namespace HeroVsGoblin01
 
     private void HandlePlayerMovedEvent(object sender, PlayerMovedEventArgs e)
     {
+      RefreshGame();
+    }
+
+    private void RefreshGame()
+    {
       if (_gameMap != null)
       {
         Controls.Remove(_gameMap);
@@ -65,7 +70,6 @@ namespace HeroVsGoblin01
       Controls.Add(_gameMap);
       EnableBuyButton();
     }
-
 
     private void EnableBuyButton()
     {
@@ -118,6 +122,7 @@ namespace HeroVsGoblin01
       _gameEngine.Shop.Buy(0);
 
       // TODO: find a way to update screen immediately?
+      RefreshGame();  //  redraw entire game as a temp fix
     }
     #endregion
   }

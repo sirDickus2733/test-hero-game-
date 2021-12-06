@@ -123,7 +123,7 @@ namespace HeroVsGoblin01
         _playerHealthStats = new RichTextBox();
         //_playerHealthStats.Font = new Font("Arial", 11);
         _playerHealthStats.Location = new Point(105, 420);
-        _playerHealthStats.Size = new Size(180, 80);
+        _playerHealthStats.Size = new Size(180, 120);
       }
       var heroObject = (Hero)hero;
       _playerHealthStats.Text = heroObject.ToString();
