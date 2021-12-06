@@ -139,9 +139,9 @@ namespace HeroVsGoblin01.Characters
     
     public void Pickup(Item item)
     {
-      if (item.GetType() == typeof(Weapon))
+      if (item.Type == TileType.Weapon)
         Equip((Weapon)item);
-      else if (item.GetType() == typeof(Gold))
+      else if ( item.Type == TileType.Gold )
       {
         var golObj = (Gold)item;
         _goldPurse += golObj.Amount;

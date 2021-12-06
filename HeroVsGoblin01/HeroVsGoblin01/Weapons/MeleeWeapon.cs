@@ -29,6 +29,28 @@ namespace HeroVsGoblin01.Weapons
     }
 
 
+    public MeleeWeapon(string symbol, Types t, int x, int y) : base(symbol, x, y)
+    {
+      switch (t)
+      {
+        case Types.Dagger:
+          _durability = 10;
+          _damage = 3;
+          _cost = 3;
+          _weaponType = t.ToString();
+          break;
+        case Types.LongSword:
+          _durability = 6;
+          _damage = 4;
+          _cost = 5;
+          _weaponType = t.ToString();
+          break;
+        default:
+          break;
+      }
+    }
+
+
     #region Properties
     public override int Range
     {

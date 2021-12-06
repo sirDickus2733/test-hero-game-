@@ -54,9 +54,8 @@ namespace HeroVsGoblin01.Game
     {
       CreateTileMapBorders();
       CreateItems();
-
-      // Start by creating the hero
       Create(TileType.Hero);
+
       // Next, create enemies at random positionso on the map
       for (int i = 0; i < _enemies.Length; i++)
       {
@@ -72,7 +71,7 @@ namespace HeroVsGoblin01.Game
       for (int i = 0; i < _numWeapons; i++)
       {
         var position = GetNextAvailablePosition();
-        var weaponObj = CommonFuctions.RandomWeapon();
+        var weaponObj = CommonFuctions.RandomWeapon(position.Item1, position.Item2);
         _items[i] = weaponObj;
         _tileArray[position.Item1, position.Item2] = weaponObj;
       }
@@ -181,11 +180,10 @@ namespace HeroVsGoblin01.Game
       Item result = null;
       for (int i = 0; i < _items.Length; i++)
       {
-        result = _items[i];
-        if (result is null)
-          continue;
-        else if (result.X == x && result.Y == y)
+        var tmp = _items[i];
+        if (tmp != null && tmp.X == x && tmp.Y == y)
         {
+          result = _items[i];
           _items[i] = null; // set item to null and return item
           break;
         }
