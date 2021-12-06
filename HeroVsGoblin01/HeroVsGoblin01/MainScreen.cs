@@ -10,7 +10,9 @@ namespace HeroVsGoblin01
   {
     #region Private members
     private readonly GameEngine _gameEngine;
-    private int _playerHealthPoints; 
+    private int _playerHealthPoints;
+    Button _buyWeaponBtn;
+
     #endregion
 
     public MainScreen()
@@ -19,6 +21,7 @@ namespace HeroVsGoblin01
       _gameEngine = new GameEngine();
       StartGame();
       _gameEngine.PlayerMoved += HandlePlayerMovedEvent;
+      EnableBuyButton();
     }
 
     #region Game events
@@ -60,6 +63,13 @@ namespace HeroVsGoblin01
       _gameMap = null;  // TODO: OPTIMISE TO STOP FLASHING WHEN HERO MOVES
       _gameMap = DrawGameMap(_gameEngine.Map.TileArray);
       Controls.Add(_gameMap);
+      EnableBuyButton();
+    }
+
+
+    private void EnableBuyButton()
+    {
+      _buyWeaponBtn.Enabled = _gameEngine.Shop.CanBuy(0);
     }
     #endregion
 
@@ -70,16 +80,11 @@ namespace HeroVsGoblin01
       Controls.Add(_gameMap);
 
 
-      // Create two buttons to use as the accept and cancel buttons.
-      Button buyWeaponBtn = new Button();
-      Button button2 = new Button();
-
-      // Set the text of button1 to "OK".
-      buyWeaponBtn.Text = _gameEngine.Shop?.DisplayWeapon(0);
-      // Set the position of the button on the form.
-      buyWeaponBtn.Size = new Size(150, 30);
-      buyWeaponBtn.Location = new Point(600, 10);
-      Controls.Add(buyWeaponBtn);
+      _buyWeaponBtn = new Button();
+      _buyWeaponBtn.Text = _gameEngine.Shop?.DisplayWeapon(0);
+      _buyWeaponBtn.Size = new Size(150, 30);
+      _buyWeaponBtn.Location = new Point(600, 10);
+      Controls.Add(_buyWeaponBtn);
 
 
       GroupBox playerStatsPanel = new GroupBox();
