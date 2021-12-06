@@ -24,7 +24,20 @@ namespace HeroVsGoblin01.Characters
     {
       var stats = new StringBuilder();
       stats.AppendLine($"HP: {HP} / {MaxHP}");
-      stats.AppendLine($"DAMAGE: {Damage}");
+      //stats.AppendLine($"DAMAGE: {Damage}");
+      if(_weapon == null)
+      {
+        stats.AppendLine($"Current Weapon: Bare Hands");
+        stats.AppendLine($"Weapon Range: 1");
+      }
+      else
+      {
+        stats.AppendLine($"Current Weapon: {_weapon.WeaponType}");
+        stats.AppendLine($"Weapon Range: {_weapon.Range}");
+        stats.AppendLine($"Weapon Damage: {_weapon.Damage} ");
+        stats.AppendLine($"Durability: {_weapon.Durability} ");
+        stats.AppendLine($"Gold: ");  // TODO:
+      }
       return stats.ToString().Trim() ;
     }
     #endregion
