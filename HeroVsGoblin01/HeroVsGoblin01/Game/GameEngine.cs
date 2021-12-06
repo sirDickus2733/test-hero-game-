@@ -16,14 +16,15 @@ namespace HeroVsGoblin01.Game
     #region Constructor
     public GameEngine()
     {
-      _shop = new Shop();
       _map = new Map(8, 10, 8, 10, 3);
+      _shop = new Shop(_map.Hero);
     }
 
 
     public GameEngine(int minWidth, int maxWidth, int minHeight, int maxHeight, int enemies)
     {
       _map = new Map(minWidth, maxWidth, minHeight, maxHeight, enemies);
+      _shop = new Shop(_map.Hero);
     }
     #endregion
 
@@ -31,6 +32,11 @@ namespace HeroVsGoblin01.Game
     public Map Map
     {
       get => _map;
+    }
+
+    public Shop Shop
+    {
+      get => _shop;
     }
     #endregion
 

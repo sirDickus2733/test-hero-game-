@@ -19,16 +19,9 @@ namespace HeroVsGoblin01
       _gameEngine = new GameEngine();
       StartGame();
       _gameEngine.PlayerMoved += HandlePlayerMovedEvent;
-      HandleKeyBoardEvents();
     }
 
     #region Game events
-    private void HandleKeyBoardEvents()
-    {
-      //KeyPreview = true;
-      //KeyDown += HandleMoveCharacterEvent;
-      //KeyPress += Form1_KeyPress;
-    }
 
     protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
     {
@@ -64,7 +57,7 @@ namespace HeroVsGoblin01
         Controls.Remove(_gameMap);
         _gameMap.Dispose();
       }
-      _gameMap = null;
+      _gameMap = null;  // TODO: OPTIMISE TO STOP FLASHING WHEN HERO MOVES
       _gameMap = DrawGameMap(_gameEngine.Map.TileArray);
       Controls.Add(_gameMap);
     }
@@ -78,23 +71,15 @@ namespace HeroVsGoblin01
 
 
       // Create two buttons to use as the accept and cancel buttons.
-      Button button1 = new Button();
+      Button buyWeaponBtn = new Button();
       Button button2 = new Button();
 
       // Set the text of button1 to "OK".
-      button1.Text = "Restart";
+      buyWeaponBtn.Text = _gameEngine.Shop?.DisplayWeapon(0);
       // Set the position of the button on the form.
-      button1.Location = new Point(10, 10);
-      // Set the text of button2 to "Cancel".
-      button2.Text = "Settings";
-      // Set the position of the button based on the location of button1.
-      button2.Location
-         = new Point(button1.Left, button1.Height + button1.Top + 10);
-
-      // Display a help button on the form.
-      HelpButton = true;
-      this.Controls.Add(button1);
-      this.Controls.Add(button2);
+      buyWeaponBtn.Size = new Size(150, 30);
+      buyWeaponBtn.Location = new Point(600, 10);
+      Controls.Add(buyWeaponBtn);
 
 
       GroupBox playerStatsPanel = new GroupBox();
