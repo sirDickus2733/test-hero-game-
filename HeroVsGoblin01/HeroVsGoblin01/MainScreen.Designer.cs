@@ -93,6 +93,16 @@ namespace HeroVsGoblin01
             b.BackColor = Color.Orange;
             b.ForeColor = Color.White;
           }
+          else if (cell?.GetType() == typeof(Leader))
+          {
+            b.BackColor = Color.Red;
+            b.ForeColor = Color.White;
+          }
+          else if (cell?.GetType() == typeof(Weapons.Weapon))
+          {
+            b.BackColor = Color.Yellow;
+            b.ForeColor = Color.White;
+          }
 
           _gameMap.Controls.Add(b);
           cellPosX += cellW;

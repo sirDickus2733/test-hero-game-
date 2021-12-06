@@ -132,7 +132,7 @@ namespace HeroVsGoblin01.Game
 
         case TileType.Enemy:
           var diceRoll = _random.Next(0, 2);
-          Enemy enemy = null;
+          Enemy enemy;
           if (diceRoll > 0){
             enemy = new Goblin(position.Item1, position.Item2);
           }
