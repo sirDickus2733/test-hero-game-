@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HeroVsGoblin01.Weapons
 {
-  public class Weapon : Tile
+  public class Weapon : Item
   {
 
     public Weapon(string symbol, int x = -1, int y = -1) : base(x, y, symbol)

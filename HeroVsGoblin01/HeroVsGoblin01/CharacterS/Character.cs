@@ -132,7 +132,7 @@ namespace HeroVsGoblin01.Characters
     
     #region Public methods
     
-    public void Pickup(Tile item)
+    public void Pickup(Item item)
     {
       if (item.GetType() == typeof(Weapon))
         Equip((Weapon)item);
