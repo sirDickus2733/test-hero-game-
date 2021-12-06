@@ -10,6 +10,7 @@ namespace HeroVsGoblin01.Weapons
 
     public Weapon(string symbol, int x = -1, int y = -1) : base(x, y, symbol)
     {
+      _kind = TileType.Weapon;
     }
 
 

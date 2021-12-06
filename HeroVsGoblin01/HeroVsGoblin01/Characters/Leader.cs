@@ -10,6 +10,7 @@ namespace HeroVsGoblin01.Characters
   {
     public Leader(int x, int y) : base(x, y, Settings.Default.LeaderDamage, Settings.Default.LeaderHp, "L")
     {
+      _kind = TileType.Enemy;
       _weapon = new Weapons.MeleeWeapon("s", HeroVsGoblin01.Weapons.MeleeWeapon.Types.LongSword);
 
       // TODO: implement attacking

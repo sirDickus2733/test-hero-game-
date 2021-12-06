@@ -9,7 +9,7 @@ namespace HeroVsGoblin01.Characters
     #region Constructors
     public Mage(int x, int y) : base(x, y, 5, 5 ,"M")
     {
-     
+      _kind = TileType.Enemy;
     }
     #endregion
 
