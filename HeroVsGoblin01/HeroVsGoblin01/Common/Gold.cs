@@ -15,6 +15,7 @@ namespace HeroVsGoblin01.Common
     {
       _random = new Random();
       _amount = _random.Next(1, 6);
+      _kind = TileType.Gold;
     } 
     #endregion
 

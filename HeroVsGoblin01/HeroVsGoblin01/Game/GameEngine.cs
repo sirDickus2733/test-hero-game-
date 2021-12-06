@@ -57,7 +57,7 @@ namespace HeroVsGoblin01.Game
       var foundItem = _map.GetItemAtPosition(newX, newY);
       if(foundItem != null)
       {
-        _map.Hero.Pickup(foundItem)
+        _map.Hero.Pickup(foundItem);
       }
 
         RaisePlayerMovedEvent(new PlayerMovedEventArgs

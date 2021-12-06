@@ -9,11 +9,11 @@ namespace HeroVsGoblin01.Characters
     public Hero(int xValue, int yValue, int hp=-1) : base(xValue, yValue, Settings.Default.HeroSymbol)
     {
       if (hp <= -1)
-        hp = Settings.Default.HeroHp;
+      { hp = Settings.Default.HeroHp; }
 
-      HP = hp;
-      MaxHP = hp;
-      Damage = Settings.Default.HeroDamage;
+      _hp = hp;
+      _maxHP = hp;
+      _damage = Settings.Default.HeroDamage;
       _kind = TileType.Hero;
     }
     #endregion
@@ -29,6 +29,7 @@ namespace HeroVsGoblin01.Characters
       {
         stats.AppendLine($"Current Weapon: Bare Hands");
         stats.AppendLine($"Weapon Range: 1");
+        stats.AppendLine($"Gold: {GoldPurse}");
       }
       else
       {
@@ -38,7 +39,7 @@ namespace HeroVsGoblin01.Characters
         stats.AppendLine($"Durability: {_weapon.Durability} ");
         stats.AppendLine($"Gold: {GoldPurse}"); 
       }
-      return stats.ToString().Trim() ;
+      return stats.ToString().Trim();
     }
     #endregion
   }
