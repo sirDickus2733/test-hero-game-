@@ -68,7 +68,6 @@ namespace HeroVsGoblin01.Game
       var bought = _weapons[num];
       _buyer.GoldPurse -= bought.Cost; // decrease gold from buyer
       _buyer.Pickup(bought);
-     
       // fill get new weapon to replace sold one
       _weapons[num] = RandomWeapon();
     }

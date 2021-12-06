@@ -84,6 +84,7 @@ namespace HeroVsGoblin01
       _buyWeaponBtn.Text = _gameEngine.Shop?.DisplayWeapon(0);
       _buyWeaponBtn.Size = new Size(150, 30);
       _buyWeaponBtn.Location = new Point(600, 10);
+      _buyWeaponBtn.Click += _buyWeaponBtn_Click;
       Controls.Add(_buyWeaponBtn);
 
 
@@ -109,6 +110,14 @@ namespace HeroVsGoblin01
       Controls.Add(healthBar);
       Controls.Add(_playerHealthStats);
       Controls.Add(playerStatsPanel);
+    }
+
+    private void _buyWeaponBtn_Click(object sender, System.EventArgs e)
+    {
+      // equip hero with this weapon, if he can afford
+      _gameEngine.Shop.Buy(0);
+
+      // TODO: find a way to update screen immediately?
     }
     #endregion
   }
