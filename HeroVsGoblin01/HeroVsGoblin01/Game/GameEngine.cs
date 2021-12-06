@@ -53,7 +53,14 @@ namespace HeroVsGoblin01.Game
       _map.TileArray[newX, newY] = _map.Hero;
       _map.UpdateVision(_map.Hero);
 
-      RaisePlayerMovedEvent(new PlayerMovedEventArgs
+      // pickup gold or weapon if any
+      var foundItem = _map.GetItemAtPosition(newX, newY);
+      if(foundItem != null)
+      {
+        _map.Hero.Pickup(foundItem)
+      }
+
+        RaisePlayerMovedEvent(new PlayerMovedEventArgs
       {
         OldX = oldX,
         OldY = oldY,

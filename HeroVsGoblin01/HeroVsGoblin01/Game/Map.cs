@@ -46,6 +46,7 @@ namespace HeroVsGoblin01.Game
     public int MapHeight { get => _height; }
     public int MapWidth { get => _width; }
     public Tile[,] TileArray { get => _tileArray; }
+    public Item[] Items { get => _items; }
     #endregion
 
     #region Private methods

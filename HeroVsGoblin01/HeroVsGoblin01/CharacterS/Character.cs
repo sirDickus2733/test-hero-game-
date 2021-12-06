@@ -97,15 +97,14 @@ namespace HeroVsGoblin01.Characters
     {
       switch (movement)
       {
-        // Movement only valid if tile in the direction is empty
         case MovementEnum.Up:
-          return Vision[0]?.GetType() == null ? movement : MovementEnum.NoMovement;
+          return IsMoveAllowed(Vision[0]) ? movement : MovementEnum.NoMovement;
         case MovementEnum.Down:
-          return Vision[1]?.GetType() == null ? movement : MovementEnum.NoMovement;
+          return IsMoveAllowed(Vision[1]) ? movement : MovementEnum.NoMovement;
         case MovementEnum.Left:
-          return Vision[2]?.GetType() == null ? movement : MovementEnum.NoMovement;
+          return IsMoveAllowed(Vision[2]) ? movement : MovementEnum.NoMovement;
         case MovementEnum.Right:
-          return Vision[3]?.GetType() == null ? movement : MovementEnum.NoMovement;
+          return IsMoveAllowed(Vision[3]) ? movement : MovementEnum.NoMovement;
         default:
           return movement;
       }
@@ -174,6 +173,14 @@ namespace HeroVsGoblin01.Characters
         default:
           break;
       }
+    }
+    #endregion
+
+
+    #region Private Methods
+    private bool IsMoveAllowed(Tile obstacleObj)
+    {
+      return obstacleObj == null || obstacleObj.Type == TileType.Gold || obstacleObj.Type == TileType.Weapon;
     }
     #endregion
   }
