@@ -13,6 +13,7 @@ namespace HeroVsGoblin01.Common
     #region Constructors
     public Gold(int x, int y, string symbol="$"):base(x, y, symbol)
     {
+      _random = new Random();
       _amount = _random.Next(1, 6);
     } 
     #endregion

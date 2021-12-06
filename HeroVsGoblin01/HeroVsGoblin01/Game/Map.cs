@@ -8,14 +8,17 @@ namespace HeroVsGoblin01.Game
   public class Map : Tile
   {
     #region Constructors
-    public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numberOfEnemies, int numWeapons=2)
+    public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numberOfEnemies, int numGold = 3, int numWeapons = 2)
     {
       _random = new Random();
+      _numGold = numGold;
+      _numWeapons = numWeapons;
+
       _height = _random.Next(minHeight, maxHeight);
       _width = _random.Next(minWidth, maxWidth);
       _tileArray = new Tile[_width, _height];
       _enemies = new Enemy[numberOfEnemies];
-      _items = new Tile[numWeapons];
+      _items = new Item[numWeapons + numGold];
       Create();
       UpdateVision();
 
@@ -28,9 +31,11 @@ namespace HeroVsGoblin01.Game
     #region Private member variables
     private int _height;
     private int _width;
+    private int _numGold;
+    private int _numWeapons;
     private Hero _hero;
     private Tile[] _enemies;
-    private Tile[] _items; // For gold,weapons etc
+    private Item[] _items; // For gold,weapons etc
     private Tile[,] _tileArray;  // Create a 2d tile array
     private Random _random;
     #endregion
@@ -55,18 +60,28 @@ namespace HeroVsGoblin01.Game
         var enemy = Create(TileType.Enemy);
         _enemies[i] = enemy;
       }
-      CreateWeapons();
+      CreateItems();
     }
 
-    private void CreateWeapons()
+    private void CreateItems()
     {
-      for (int i = 0; i < _items.Length; i++)
+      // Add weapons to items array
+      for (int i = 0; i < _numWeapons; i++)
       {
         var position = GetNextAvailablePosition();
         var weaponObj = CommonFuctions.RandomWeapon();
         _items[i] = weaponObj;
         _tileArray[position.Item1, position.Item2] = weaponObj;
-      } // TODO: for adding gold, iterate from end side
+      }
+
+      // Add gold to items array
+      for (int i = _numWeapons; i < _items.Length; i++)
+      {
+        var position = GetNextAvailablePosition();
+        var goldObj = new Gold(position.Item1, position.Item2);
+        _items[i] = goldObj;
+        _tileArray[position.Item1, position.Item2] = goldObj;
+      }
     }
 
     private void CreateTileMapBorders()
@@ -131,21 +146,26 @@ namespace HeroVsGoblin01.Game
           return _hero;
 
         case TileType.Enemy:
-          var diceRoll = _random.Next(0, 2);
+          var diceRoll = _random.Next(0, 3);
           Enemy enemy;
-          if (diceRoll > 0){
+          if (diceRoll == 0)
+          {
             enemy = new Goblin(position.Item1, position.Item2);
+          }
+          else if (diceRoll == 1)
+          {
+            enemy = new Mage(position.Item1, position.Item2);
           }
           else
           {
             enemy = new Leader(position.Item1, position.Item2);
           }
-          
+
           _tileArray[position.Item1, position.Item2] = enemy;
           return enemy;
         case TileType.Gold:
           break;
-          
+
         default:
           break;
       }
@@ -153,6 +173,26 @@ namespace HeroVsGoblin01.Game
     }
 
 
+    public Item GetItemAtPosition(int x, int y)
+    {
+      Item result = null;
+      for (int i = 0; i < _items.Length; i++)
+      {
+        result = _items[i];
+        if (result is null)
+          continue;
+        else if (result.X == x && result.Y == y)
+        {
+          _items[i] = null; // set item to null and return item
+          _tileArray[x, y] = null; // Also delete from game
+        }
+        else
+        {
+          result = null; // item doesn not existin x,y so return null
+        }
+      }
+      return result;
+    }
     #endregion
 
     #region Helper methods

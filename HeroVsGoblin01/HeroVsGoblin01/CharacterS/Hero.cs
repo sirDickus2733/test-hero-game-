@@ -36,7 +36,7 @@ namespace HeroVsGoblin01.Characters
         stats.AppendLine($"Weapon Range: {_weapon.Range}");
         stats.AppendLine($"Weapon Damage: {_weapon.Damage} ");
         stats.AppendLine($"Durability: {_weapon.Durability} ");
-        stats.AppendLine($"Gold: ");  // TODO:
+        stats.AppendLine($"Gold: {GoldPurse}"); 
       }
       return stats.ToString().Trim() ;
     }

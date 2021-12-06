@@ -23,6 +23,13 @@ namespace HeroVsGoblin01.Characters
     #endregion
 
     #region Properties
+    protected int _goldPurse = 0;
+    public int GoldPurse
+    {
+      get { return _goldPurse; }
+    }
+
+
     protected Weapon _weapon;
     public Weapon Weapons
     {
@@ -37,7 +44,6 @@ namespace HeroVsGoblin01.Characters
     public int HP
     {
       get { return _hp; }
-      set { _hp = value; }
     }
 
 
@@ -136,6 +142,9 @@ namespace HeroVsGoblin01.Characters
     {
       if (item.GetType() == typeof(Weapon))
         Equip((Weapon)item);
+      else if (item.GetType() == typeof(Gold))
+        _goldPurse++;
+
 
     }
 

@@ -98,7 +98,7 @@ namespace HeroVsGoblin01
             b.BackColor = Color.Red;
             b.ForeColor = Color.White;
           }
-          else if ( cell!= null &&  cell.GetType().IsSubclassOf(typeof(Weapons.Weapon)) )
+          else if ( cell!= null &&  cell.GetType().IsSubclassOf(typeof(Item)) )
           {
             b.BackColor = Color.Yellow;
             b.ForeColor = Color.Black;
