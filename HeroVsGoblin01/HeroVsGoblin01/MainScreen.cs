@@ -100,7 +100,7 @@ namespace HeroVsGoblin01
       GroupBox playerStatsPanel = new GroupBox();
       playerStatsPanel.Visible = true;
       playerStatsPanel.BackColor = Color.White;
-      playerStatsPanel.Size = new Size(500, 100);
+      playerStatsPanel.Size = new Size(500, 140);
       playerStatsPanel.Location = new Point(100, 400);
       playerStatsPanel.Text = "Player stats";
       var healthBar = new ProgressBar();

@@ -23,10 +23,8 @@ namespace HeroVsGoblin01.Characters
     public override string ToString()
     {
       var stats = new StringBuilder();
-      stats.AppendLine("Player Stats");
       stats.AppendLine($"HP: {HP} / {MaxHP}");
       stats.AppendLine($"DAMAGE: {Damage}");
-      stats.AppendLine($"[{X}, {Y}]");
       return stats.ToString().Trim() ;
     }
     #endregion
