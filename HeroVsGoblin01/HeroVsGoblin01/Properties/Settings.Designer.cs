@@ -130,7 +130,7 @@ namespace HeroVsGoblin01.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("620")]
+        [global::System.Configuration.DefaultSettingValueAttribute("720")]
         public int ScreenWidth {
             get {
                 return ((int)(this["ScreenWidth"]));
@@ -139,7 +139,7 @@ namespace HeroVsGoblin01.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("520")]
+        [global::System.Configuration.DefaultSettingValueAttribute("600")]
         public int ScreenHeight {
             get {
                 return ((int)(this["ScreenHeight"]));

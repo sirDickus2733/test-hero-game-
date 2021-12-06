@@ -1,5 +1,6 @@
 ﻿using HeroVsGoblin01.Characters;
 using HeroVsGoblin01.Common;
+using HeroVsGoblin01.Weapons;
 using System;
 
 namespace HeroVsGoblin01.Game
@@ -7,13 +8,14 @@ namespace HeroVsGoblin01.Game
   public class Map : Tile
   {
     #region Constructors
-    public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numberOfEnemies)
+    public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int numberOfEnemies, int numWeapons=2)
     {
       _random = new Random();
       _height = _random.Next(minHeight, maxHeight);
       _width = _random.Next(minWidth, maxWidth);
       _tileArray = new Tile[_width, _height];
       _enemies = new Enemy[numberOfEnemies];
+      _items = new Tile[numWeapons];
       Create();
       UpdateVision();
 
@@ -27,14 +29,15 @@ namespace HeroVsGoblin01.Game
     private int _height;
     private int _width;
     private Hero _hero;
-    private Enemy[] _enemies;
+    private Tile[] _enemies;
+    private Tile[] _items; // For gold,weapons etc
     private Tile[,] _tileArray;  // Create a 2d tile array
     private Random _random;
     #endregion
 
     #region Public accessors
     public Hero Hero { get => _hero; }
-    public Enemy[] Enemies { get => _enemies; }
+    public Tile[] Enemies { get => _enemies; }
     public int MapHeight { get => _height; }
     public int MapWidth { get => _width; }
     public Tile[,] TileArray { get => _tileArray; }
@@ -50,8 +53,20 @@ namespace HeroVsGoblin01.Game
       for (int i = 0; i < _enemies.Length; i++)
       {
         var enemy = Create(TileType.Enemy);
-        _enemies[i] = (Enemy)enemy;
+        _enemies[i] = enemy;
       }
+      CreateWeapons();
+    }
+
+    private void CreateWeapons()
+    {
+      for (int i = 0; i < _items.Length; i++)
+      {
+        var position = GetNextAvailablePosition();
+        var weaponObj = CommonFuctions.RandomWeapon();
+        _items[i] = weaponObj;
+        _tileArray[position.Item1, position.Item2] = weaponObj;
+      } // TODO: for adding gold, iterate from end side
     }
 
     private void CreateTileMapBorders()
@@ -116,15 +131,21 @@ namespace HeroVsGoblin01.Game
           return _hero;
 
         case TileType.Enemy:
-          var enemy = new Goblin(position.Item1, position.Item2);
+          var diceRoll = _random.Next(0, 2);
+          Enemy enemy = null;
+          if (diceRoll > 0){
+            enemy = new Goblin(position.Item1, position.Item2);
+          }
+          else
+          {
+            enemy = new Leader(position.Item1, position.Item2);
+          }
+          
           _tileArray[position.Item1, position.Item2] = enemy;
           return enemy;
-
-        // rest will be implemented later(i think)
         case TileType.Gold:
           break;
-        case TileType.Weapon:
-          break;
+          
         default:
           break;
       }
