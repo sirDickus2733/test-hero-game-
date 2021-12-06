@@ -25,12 +25,22 @@ namespace HeroVsGoblin01.Game
       {
         _weapons[i] = RandomWeapon();
       }
-    } 
+    }
+
+    public Shop()
+    {
+      _random = new Random();
+      _weapons = new Weapon[3];
+      for (int i = 0; i < 3; i++)
+      {
+        _weapons[i] = RandomWeapon();
+      }
+    }
     #endregion
 
     private Weapon RandomWeapon()
     {
-      // Not really the best implementation i think
+      // TODO: optimise..
       var randomWeaponIdx = _random.Next(0, 4);
       switch (randomWeaponIdx)  
       {
@@ -47,11 +57,19 @@ namespace HeroVsGoblin01.Game
       }
     }
 
+    public bool CanBuy(int num)
+    {
+      return _buyer.GoldPurse > _weapons[num].Cost;
+    }
+
 
     public void Buy(int num)
     {
       var bought = _weapons[num];
-      // todo: decrease gold from buyer
+      _buyer.GoldPurse -= bought.Cost; // decrease gold from buyer
+      _buyer.Pickup(bought);
+     
+      // fill get new weapon to replace sold one
       _weapons[num] = RandomWeapon();
     }
 

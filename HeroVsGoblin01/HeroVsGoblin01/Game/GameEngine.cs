@@ -10,11 +10,13 @@ namespace HeroVsGoblin01.Game
   {
     #region Member variables
     private readonly Map _map; 
+    private readonly Shop _shop;
     #endregion
 
     #region Constructor
     public GameEngine()
     {
+      _shop = new Shop();
       _map = new Map(8, 10, 8, 10, 3);
     }
 

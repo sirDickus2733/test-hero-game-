@@ -27,6 +27,7 @@ namespace HeroVsGoblin01.Characters
     public int GoldPurse
     {
       get { return _goldPurse; }
+      set { _goldPurse = value; }
     }
 
 
