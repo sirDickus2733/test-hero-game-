@@ -24,5 +24,24 @@ namespace HeroVsGoblin01.Common
           return null;
       }
     }
+
+
+    public static Weapon RandomWeapon(int x, int y)
+    {
+      var randomWeaponIdx = new Random().Next(0, 4);
+      switch (randomWeaponIdx)
+      {
+        case 0:
+          return new MeleeWeapon("D", MeleeWeapon.Types.Dagger);
+        case 1:
+          return new MeleeWeapon("|", MeleeWeapon.Types.LongSword);
+        case 2:
+          return new RangeWeapon("R", RangeWeapon.Types.Riffle);
+        case 3:
+          return new RangeWeapon("B", RangeWeapon.Types.LongBow);
+        default:
+          return null;
+      }
+    }
   }
 }

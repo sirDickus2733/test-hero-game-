@@ -53,6 +53,8 @@ namespace HeroVsGoblin01.Game
     private void Create()
     {
       CreateTileMapBorders();
+      CreateItems();
+
       // Start by creating the hero
       Create(TileType.Hero);
       // Next, create enemies at random positionso on the map
@@ -61,7 +63,7 @@ namespace HeroVsGoblin01.Game
         var enemy = Create(TileType.Enemy);
         _enemies[i] = enemy;
       }
-      CreateItems();
+      
     }
 
     private void CreateItems()
@@ -185,11 +187,7 @@ namespace HeroVsGoblin01.Game
         else if (result.X == x && result.Y == y)
         {
           _items[i] = null; // set item to null and return item
-          _tileArray[x, y] = null; // Also delete from game
-        }
-        else
-        {
-          result = null; // item doesn not existin x,y so return null
+          break;
         }
       }
       return result;

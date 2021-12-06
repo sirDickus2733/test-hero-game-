@@ -142,9 +142,10 @@ namespace HeroVsGoblin01.Characters
       if (item.GetType() == typeof(Weapon))
         Equip((Weapon)item);
       else if (item.GetType() == typeof(Gold))
-        _goldPurse++;
-
-
+      {
+        var golObj = (Gold)item;
+        _goldPurse += golObj.Amount;
+      }
     }
 
     public void Loot()
